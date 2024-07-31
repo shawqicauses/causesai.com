@@ -1,5 +1,5 @@
 {
-  "reviewed": "true 1️⃣",
+  "reviewed": "true 2️⃣",
   "version": "1.0.0",
   "name": "causesai.com",
   "description": "causesai.com Developed by @shawqicauses.",
@@ -13,6 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "4.29.12",
     "@hookform/resolvers": "3.4.0",
     "@radix-ui/react-alert-dialog": "1.0.5",
     "@radix-ui/react-avatar": "1.1.0",
