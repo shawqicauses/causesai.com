@@ -1,0 +1,116 @@
+// DONE REVIEWING: GITHUB COMMIT
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  clerk_id  String   @unique
+  full_name String
+  type      String
+  domains   Domain[]
+  Billing   Billing?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Domain {
+  id                 String             @id @default(uuid())
+  icon               String
+  name               String
+  chat_bot           ChatBot?
+  help_desks         HelpDesk[]
+  questions_filtered QuestionFiltered[]
+  user_id            String?
+  user               User?              @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  customers          Customer[]
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+}
+
+model Billing {
+  id      String  @id @default(uuid())
+  plan    Plans   @default(STANDARD)
+  credits Int     @default(10)
+  user_id String? @unique
+  user    User?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model ChatBot {
+  id              String  @id @default(uuid())
+  icon            String?
+  welcome_message String?
+  domain_id       String? @unique
+  domain          Domain? @relation(fields: [domain_id], references: [id], onDelete: Cascade)
+}
+
+model HelpDesk {
+  id        String  @id @default(uuid())
+  question  String
+  answer    String
+  domain_id String?
+  domain    Domain? @relation(fields: [domain_id], references: [id], onDelete: Cascade)
+}
+
+model QuestionFiltered {
+  id        String  @id @default(uuid())
+  question  String
+  answered  String?
+  domain_id String?
+  domain    Domain? @relation(fields: [domain_id], references: [id], onDelete: Cascade)
+}
+
+model Customer {
+  id         String             @id @default(uuid())
+  email      String?            @unique
+  responses  CustomerResponse[]
+  chat_rooms ChatRoom[]
+  domain_id  String?
+  domain     Domain?            @relation(fields: [domain_id], references: [id], onDelete: Cascade)
+}
+
+model CustomerResponse {
+  id          String   @id @default(uuid())
+  question    String
+  answered    String?
+  customer_id String   @unique
+  customer    Customer @relation(fields: [customer_id], references: [id], onDelete: Cascade)
+}
+
+model ChatRoom {
+  id          String        @id @default(uuid())
+  live        Boolean       @default(false)
+  mailed      Boolean       @default(false)
+  customer_id String?
+  customer    Customer?     @relation(fields: [customer_id], references: [id], onDelete: Cascade)
+  messages    ChatMessage[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model ChatMessage {
+  id           String    @id @default(uuid())
+  role         Roles?
+  message      String
+  chat_room_id String?   @unique
+  chat_room    ChatRoom? @relation(fields: [chat_room_id], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+enum Plans {
+  STANDARD
+  PRO
+  ULTIMATE
+}
+
+enum Roles {
+  OWNER
+  CUSTOMER
+}
