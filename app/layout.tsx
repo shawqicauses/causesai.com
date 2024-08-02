@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 import {Poppins} from "next/font/google"
 import {PropsWithChildren} from "react"
 import "../styles/global.css"
@@ -11,9 +11,9 @@ const poppins = Poppins({
 
 const Layout = function Layout({children}: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full bg-background">
       <head />
-      <body className={poppins.className}>
+      <body className={`${poppins.className} h-full`}>
         <Providers>{children}</Providers>
       </body>
     </html>
