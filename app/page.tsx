@@ -1,15 +1,7 @@
-// DONE REVIEWING: GITHUB COMMIT
-
-import TRPCBasic from "../examples/trpc/basic"
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 const Page = async function Page() {
-  return (
-    <main>
-      <div className="mx-auto max-w-md py-20">
-        <TRPCBasic />
-      </div>
-    </main>
-  )
+  return <main>Landing Page</main>
 }
 
 export default Page
