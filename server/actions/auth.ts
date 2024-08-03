@@ -1,6 +1,6 @@
 "use server"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 import prisma from "../db"
 
@@ -22,7 +22,10 @@ export const onCompleteSignUpAttempt = async function onCompleteSignUpAttempt(
 
     if (userRegistered) return {status: 200, data: {user: userRegistered}}
   } catch (error) {
-    return {status: 500, error}
+    return {
+      status: 500,
+      error: error || "An error occurred while completing signing up. Please try again."
+    }
   }
 }
 
