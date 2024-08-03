@@ -1,6 +1,7 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 import {Poppins} from "next/font/google"
 import {PropsWithChildren} from "react"
+import {Toaster} from "../components/ui"
 import "../styles/global.css"
 import Providers from "./providers"
 
@@ -15,6 +16,7 @@ const Layout = function Layout({children}: PropsWithChildren) {
       <head />
       <body className={`${poppins.className} h-full`}>
         <Providers>{children}</Providers>
+        <Toaster />
       </body>
     </html>
   )

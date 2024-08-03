@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 generator client {
   provider = "prisma-client-js"
@@ -12,10 +12,10 @@ datasource db {
 model User {
   id        String   @id @default(uuid())
   clerk_id  String   @unique
-  full_name String
   type      String
+  full_name String
   domains   Domain[]
-  Billing   Billing?
+  billing   Billing?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
