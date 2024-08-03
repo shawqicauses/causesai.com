@@ -1,8 +1,15 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
-import {createContext, Dispatch, PropsWithChildren, SetStateAction, useState} from "react"
+import {
+  createContext,
+  Dispatch,
+  PropsWithChildren,
+  SetStateAction,
+  useContext,
+  useState
+} from "react"
 
 type ValuesInitialType = {
   stepCurrent: number
@@ -17,7 +24,7 @@ const valuesInitial: ValuesInitialType = {
 const context = createContext(valuesInitial)
 const {Provider} = context
 
-const AuthenticationContextProvider = function AuthenticationContextProvider({
+export const AuthenticationContextProvider = function AuthenticationContextProvider({
   children
 }: PropsWithChildren) {
   const [stepCurrent, setStepCurrent] = useState<number>(valuesInitial.stepCurrent)
@@ -25,4 +32,7 @@ const AuthenticationContextProvider = function AuthenticationContextProvider({
   return <Provider value={values}>{children}</Provider>
 }
 
-export default AuthenticationContextProvider
+export const useAuthentication = function useAuthentication() {
+  const state = useContext(context)
+  return state
+}

@@ -28,5 +28,3 @@ export const onCompleteSignUpAttempt = async function onCompleteSignUpAttempt(
     }
   }
 }
-
-export default {onCompleteSignUpAttempt}
