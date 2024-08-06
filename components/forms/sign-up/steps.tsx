@@ -1,11 +1,17 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
+import dynamic from "next/dynamic"
 import {useState} from "react"
 import {useFormContext} from "react-hook-form"
 import {useAuthentication} from "../../../contexts/authentication"
 import SignUpFormTypeSelection from "./type-selection"
+
+const SignUpFormInfo = dynamic(() => import("./info"), {
+  ssr: false,
+  loading: () => <div>Loading...</div>
+})
 
 const SignUpFormSteps = function SignUpFormSteps() {
   const {register, formState, setValue} = useFormContext()
@@ -24,6 +30,8 @@ const SignUpFormSteps = function SignUpFormSteps() {
           setUserType={setOnUserType}
         />
       )
+    case 2:
+      return <SignUpFormInfo />
     default:
       return null
   }
