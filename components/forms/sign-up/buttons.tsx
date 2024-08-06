@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import Link from "next/link"
 import {useFormContext} from "react-hook-form"
@@ -30,7 +30,22 @@ const SignUpFormButtons = function SignUpFormButtons() {
       </div>
     )
 
-  return <div>Sign Up Form Buttons</div>
+  return (
+    <div className="flex w-full flex-col items-center gap-3">
+      <Button
+        type="button"
+        className="w-full"
+        onClick={() => setStepCurrent((previous) => previous + 1)}>
+        Continue
+      </Button>
+      <p className="text-sm text-muted-foreground">
+        Do you have an account?{" "}
+        <Button variant="link" className="text-foreground !shadow-none" asChild>
+          <Link href="/auth/sign-in">Sign In</Link>
+        </Button>
+      </p>
+    </div>
+  )
 }
 
 export default SignUpFormButtons
