@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import {useSignUp} from "@clerk/nextjs"
 import {zodResolver} from "@hookform/resolvers/zod"
@@ -23,13 +23,14 @@ const useSignUpForm = function useSignUpForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const onGenerateOTP = async function onGenerateOTP(
+    username: string,
     emailAddress: string,
     password: string,
     onNext: Dispatch<SetStateAction<number>>
   ) {
     if (!isLoaded) return
     try {
-      await signUp.create({emailAddress, password})
+      await signUp.create({username, emailAddress, password})
       await signUp.prepareEmailAddressVerification({strategy: "email_code"})
       onNext((previous) => previous + 1)
     } catch (error: any) {
@@ -42,6 +43,15 @@ const useSignUpForm = function useSignUpForm() {
 
   const onHandleSubmit = methods.handleSubmit(async (data: SignUpSchemaParams) => {
     if (!isLoaded) return
+
+    if (data.otp.length !== 6) {
+      toast("Error", {
+        description: "Please enter a valid OTP."
+      })
+
+      return
+    }
+
     try {
       setIsLoading(true)
       const signUpAttempt = await signUp.attemptEmailAddressVerification({code: data.otp})
