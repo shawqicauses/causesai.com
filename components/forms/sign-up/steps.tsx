@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 2️⃣
+// DONE REVIEWING: GITHUB COMMIT 3️⃣
 
 import dynamic from "next/dynamic"
 import {useState} from "react"
@@ -9,6 +9,11 @@ import {useAuthentication} from "../../../contexts/authentication"
 import SignUpFormTypeSelection from "./type-selection"
 
 const SignUpFormInfo = dynamic(() => import("./info"), {
+  ssr: false,
+  loading: () => <div>Loading...</div>
+})
+
+const SignUpFormOTP = dynamic(() => import("./otp"), {
   ssr: false,
   loading: () => <div>Loading...</div>
 })
@@ -32,6 +37,8 @@ const SignUpFormSteps = function SignUpFormSteps() {
       )
     case 2:
       return <SignUpFormInfo register={register} errors={formState.errors} />
+    case 3:
+      return <SignUpFormOTP />
     default:
       return null
   }
