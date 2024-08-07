@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import {z, ZodType} from "zod"
 
@@ -31,3 +31,13 @@ export const SignUpSchema: ZodType<SignUpSchemaParams> = z
     message: "Passwords do not match",
     path: ["passwordConfirmation"]
   })
+
+export type SignInSchemaParams = {
+  email: string
+  password: string
+}
+
+export const SignInSchema: ZodType<SignInSchemaParams> = z.object({
+  email: z.string().email(),
+  password: z.string().min(8).max(64)
+})
