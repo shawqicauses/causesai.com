@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 import {OTPInput} from "input-otp"
 import {ComponentPropsWithoutRef, ElementRef, forwardRef} from "react"
@@ -21,5 +21,13 @@ const InputOTP = forwardRef<ElementRef<typeof OTPInput>, ComponentPropsWithoutRe
 )
 
 InputOTP.displayName = "InputOTP"
+
+const InputOTPGroup = forwardRef<ElementRef<"div">, ComponentPropsWithoutRef<"div">>(
+  ({className, ...props}, ref) => (
+    <div ref={ref} className={cn("flex items-center", className)} {...props} />
+  )
+)
+
+InputOTPGroup.displayName = "InputOTPGroup"
 
 export default InputOTP
