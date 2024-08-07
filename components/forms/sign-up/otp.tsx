@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import {Dispatch, Fragment, SetStateAction} from "react"
 import OTPInput from "../../otp-input"
@@ -17,7 +17,7 @@ const SignUpFormOTP = function SignUpFormOTP({onOTP, setOnOTP}: SignUpFormOTPPro
       <p className="mt-2 text-sm leading-normal text-muted-foreground">
         Please enter the one-time password that was sent to your email.
       </p>
-      <div className="flex w-full justify-center">
+      <div className="mt-6 flex w-full justify-center">
         <OTPInput onOTP={onOTP} setOnOTP={setOnOTP} />
       </div>
     </Fragment>
