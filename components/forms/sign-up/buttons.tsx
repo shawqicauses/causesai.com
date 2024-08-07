@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 5️⃣
+// DONE REVIEWING: GITHUB COMMIT 6️⃣
 
 import Link from "next/link"
 import {useFormContext} from "react-hook-form"
@@ -58,7 +58,7 @@ const SignUpFormButtons = function SignUpFormButtons() {
           type="button"
           disabled={isDisabled}
           className="w-full"
-          {...(isDisabled && {
+          {...(!isDisabled && {
             onClick: () =>
               onGenerateOTP(
                 getValues("username"),
