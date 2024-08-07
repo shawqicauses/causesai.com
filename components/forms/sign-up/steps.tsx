@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 3️⃣
+// DONE REVIEWING: GITHUB COMMIT 4️⃣
 
 import dynamic from "next/dynamic"
 import {useState} from "react"
@@ -38,7 +38,7 @@ const SignUpFormSteps = function SignUpFormSteps() {
     case 2:
       return <SignUpFormInfo register={register} errors={formState.errors} />
     case 3:
-      return <SignUpFormOTP />
+      return <SignUpFormOTP onOTP={onOTP} setOnOTP={setOnOTP} />
     default:
       return null
   }
