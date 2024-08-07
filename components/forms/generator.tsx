@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 import {ErrorMessage} from "@hookform/error-message"
 import {FieldErrors, FieldValues, UseFormRegister} from "react-hook-form"
@@ -32,7 +32,7 @@ const FormGenerator = function FormGenerator({
   switch (controllerType) {
     case "input":
       return (
-        <Label htmlFor={`input-${label}`} className="flex flex-col gap-2">
+        <Label htmlFor={`input-${label}`} className="flex flex-col gap-1">
           {label && label}
           <Input
             form={form}
@@ -45,9 +45,7 @@ const FormGenerator = function FormGenerator({
             name={name}
             errors={errors}
             render={({message}) => (
-              <p className="shc-description-base mt-2 text-red-500">
-                {message === "Required" ? "" : message}
-              </p>
+              <p className="shc-description-base m-0 text-red-500">{message}</p>
             )}
           />
         </Label>
@@ -68,16 +66,14 @@ const FormGenerator = function FormGenerator({
             name={name}
             errors={errors}
             render={({message}) => (
-              <p className="shc-description-base mt-2 text-red-500">
-                {message === "Required" ? "" : message}
-              </p>
+              <p className="shc-description-base m-0 text-red-500">{message}</p>
             )}
           />
         </Label>
       )
     case "textarea":
       return (
-        <Label htmlFor={`textarea-${label}`} className="flex flex-col gap-2">
+        <Label htmlFor={`textarea-${label}`} className="flex flex-col gap-1">
           {label && label}
           <textarea
             form={form}
@@ -90,9 +86,7 @@ const FormGenerator = function FormGenerator({
             name={name}
             errors={errors}
             render={({message}) => (
-              <p className="shc-description-base mt-2 text-red-500">
-                {message === "Required" ? "" : message}
-              </p>
+              <p className="shc-description-base m-0 text-red-500">{message}</p>
             )}
           />
         </Label>
