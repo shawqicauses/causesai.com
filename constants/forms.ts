@@ -1,11 +1,17 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
-export const SIGN_UP_INFORMATION_FORM = [
+export const SIGN_UP_INFORMATION_FORM: {
+  id: number
+  controllerType: "input" | "select" | "textarea"
+  inputType: "text" | "email" | "password"
+  name: string
+  placeholder: string
+}[] = [
   {
     id: 1,
     controllerType: "input",
     inputType: "text",
-    name: "fullName",
+    name: "name",
     placeholder: "Full name"
   },
   {

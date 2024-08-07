@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 3️⃣
+// DONE REVIEWING: GITHUB COMMIT 4️⃣
 
 import Link from "next/link"
 import {useFormContext} from "react-hook-form"
@@ -20,7 +20,7 @@ const SignUpFormButtons = function SignUpFormButtons() {
   if (stepCurrent === 3)
     return (
       <div className="flex w-full flex-col items-center gap-3">
-        <Button type="submit" className="w-full">
+        <Button variant="accent" type="submit" className="w-full">
           Create an account
         </Button>
         <p className="text-sm text-muted-foreground">
@@ -36,8 +36,8 @@ const SignUpFormButtons = function SignUpFormButtons() {
     return (
       <div className="flex w-full flex-col items-center gap-3">
         <Button
+          variant="accent"
           type="button"
-          disabled={!isName || !isEmail || !isPassword}
           className="w-full"
           {...(isName &&
             isEmail &&
@@ -59,6 +59,7 @@ const SignUpFormButtons = function SignUpFormButtons() {
   return (
     <div className="flex w-full flex-col items-center gap-3">
       <Button
+        variant="accent"
         type="button"
         className="w-full"
         onClick={() => setStepCurrent((previous) => previous + 1)}>
