@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 4️⃣
+// DONE REVIEWING: GITHUB COMMIT 5️⃣
 
 import dynamic from "next/dynamic"
 import {useState} from "react"
@@ -19,9 +19,9 @@ const SignUpFormOTP = dynamic(() => import("./otp"), {
 })
 
 const SignUpFormSteps = function SignUpFormSteps() {
-  const {register, formState, setValue} = useFormContext()
+  const {register, formState, getValues, setValue} = useFormContext()
   const {stepCurrent} = useAuthentication()
-  const [onUserType, setOnUserType] = useState<"owner" | "student">("owner")
+  const [onUserType, setOnUserType] = useState<"owner" | "student">(getValues("type"))
   const [onOTP, setOnOTP] = useState<string>("")
 
   setValue("otp", onOTP)

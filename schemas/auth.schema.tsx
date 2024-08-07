@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 import {z, ZodType} from "zod"
 
@@ -16,6 +16,7 @@ export const SignUpSchema: ZodType<SignUpSchemaParams> = z
   .object({
     type: z.string().min(1),
     name: z.string().min(4),
+    username: z.string().min(4),
     email: z.string().email(),
     emailConfirmation: z.string().email(),
     password: z.string().min(8).max(64),

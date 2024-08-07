@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 export const SIGN_UP_INFORMATION_FORM: {
   id: number
@@ -8,11 +8,18 @@ export const SIGN_UP_INFORMATION_FORM: {
   placeholder: string
 }[] = [
   {
-    id: 1,
+    id: 0,
     controllerType: "input",
     inputType: "text",
     name: "name",
     placeholder: "Full name"
+  },
+  {
+    id: 1,
+    controllerType: "input",
+    inputType: "text",
+    name: "username",
+    placeholder: "Username"
   },
   {
     id: 2,

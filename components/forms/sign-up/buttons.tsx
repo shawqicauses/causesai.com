@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 4️⃣
+// DONE REVIEWING: GITHUB COMMIT 5️⃣
 
 import Link from "next/link"
 import {useFormContext} from "react-hook-form"
@@ -13,9 +13,27 @@ const SignUpFormButtons = function SignUpFormButtons() {
   const {stepCurrent, setStepCurrent} = useAuthentication()
   const {onGenerateOTP} = useSignUpForm()
 
-  const {isDirty: isName} = getFieldState("name", formState)
-  const {isDirty: isEmail} = getFieldState("email", formState)
-  const {isDirty: isPassword} = getFieldState("password", formState)
+  const isType = getFieldState("type", formState)
+  const isName = getFieldState("name", formState)
+  const isUsername = getFieldState("username", formState)
+  const isEmail = getFieldState("email", formState)
+  const isEmailConfirmation = getFieldState("emailConfirmation", formState)
+  const isPassword = getFieldState("password", formState)
+  const isPasswordConfirmation = getFieldState("passwordConfirmation", formState)
+
+  const isDisabled =
+    isName.invalid ||
+    isUsername.invalid ||
+    isEmail.invalid ||
+    isEmailConfirmation.invalid ||
+    isPassword.invalid ||
+    isPasswordConfirmation.invalid ||
+    !Boolean(getValues("name")) ||
+    !Boolean(getValues("username")) ||
+    !Boolean(getValues("email")) ||
+    !Boolean(getValues("emailConfirmation")) ||
+    !Boolean(getValues("password")) ||
+    !Boolean(getValues("passwordConfirmation"))
 
   if (stepCurrent === 3)
     return (
@@ -38,13 +56,17 @@ const SignUpFormButtons = function SignUpFormButtons() {
         <Button
           variant="accent"
           type="button"
+          disabled={isDisabled}
           className="w-full"
-          {...(isName &&
-            isEmail &&
-            isPassword && {
-              onClick: () =>
-                onGenerateOTP(getValues("email"), getValues("password"), setStepCurrent)
-            })}>
+          {...(isDisabled && {
+            onClick: () =>
+              onGenerateOTP(
+                getValues("username"),
+                getValues("email"),
+                getValues("password"),
+                setStepCurrent
+              )
+          })}>
           Continue
         </Button>
         <p className="text-sm text-muted-foreground">
@@ -61,8 +83,12 @@ const SignUpFormButtons = function SignUpFormButtons() {
       <Button
         variant="accent"
         type="button"
+        disabled={isType.invalid || !Boolean(getValues("type"))}
         className="w-full"
-        onClick={() => setStepCurrent((previous) => previous + 1)}>
+        onClick={() =>
+          !(isType.invalid || !Boolean(getValues("type"))) &&
+          setStepCurrent((previous) => previous + 1)
+        }>
         Continue
       </Button>
       <p className="text-sm text-muted-foreground">
