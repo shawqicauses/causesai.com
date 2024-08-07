@@ -1,8 +1,9 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 2️⃣
+// DONE REVIEWING: GITHUB COMMIT 3️⃣
 
 import {OTPInput, OTPInputContext} from "input-otp"
+import {Dot} from "lucide-react"
 import {ComponentPropsWithoutRef, ElementRef, forwardRef, useContext} from "react"
 import {cn} from "../../lib/utils"
 
@@ -58,4 +59,14 @@ const InputOTPSlot = forwardRef<
 
 InputOTPSlot.displayName = "InputOTPSlot"
 
-export default InputOTP
+const InputOTPSeparator = forwardRef<ElementRef<"div">, ComponentPropsWithoutRef<"div">>(
+  ({...props}, ref) => (
+    <div ref={ref} role="separator" {...props}>
+      <Dot />
+    </div>
+  )
+)
+
+InputOTPSeparator.displayName = "InputOTPSeparator"
+
+export {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot}
